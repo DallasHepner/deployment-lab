@@ -1,7 +1,7 @@
 let button = document.querySelector('button')
 
 const buttonAlert = () => {
-    alert(`Gamer Mode Enhanced!!!`)
+    alert(`Get good kid!`)
 }
 
 button.addEventListener('click', buttonAlert)
