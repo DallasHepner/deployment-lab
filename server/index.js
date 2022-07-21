@@ -27,8 +27,12 @@ app.get('/css', (req, res) => {
     res.sendFile(path.join(__dirname, '../index.css'))
 })
 app.get('/js', (req, res) => {
-    rollbar.log("Someone loaded your js!")
     res.sendFile(path.join(__dirname, '../index.js'))
+    try{ 
+        nonExistentFunction();
+    }catch(error){
+        rollbar.error(error)
+    }
 })
 
 const port = process.env.PORT || 4444
