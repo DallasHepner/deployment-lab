@@ -25,6 +25,11 @@ app.get('/', (req, res) => {
 app.get('/css', (req, res) => {
     rollbar.log("Someone loaded your css")
     res.sendFile(path.join(__dirname, '../index.css'))
+    try{
+        pictureLink()
+    }catch(warning){
+        rollbar.warning("Link unavailable")
+    }
 })
 app.get('/js', (req, res) => {
     res.sendFile(path.join(__dirname, '../index.js'))
@@ -32,6 +37,11 @@ app.get('/js', (req, res) => {
         nonExistentFunction();
     }catch(error){
         rollbar.error(error)
+    }
+    try{
+        buttonAlert()
+    }catch(critical){
+        rollbar.critical("No sound plays")
     }
 })
 
